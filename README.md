@@ -1,15 +1,23 @@
 # instagram_share_plus
 
-A new Flutter project.
+Forked from https://github.com/JEuler/instagram_share
+
+Flutter plugin allowing to share media to Instagram.
+Allowing to share image/video to Instagram on Android & iOS.
+
+Many thanks to [zhouteng0217](https://github.com/zhouteng0217/ShareExtend) for specific lines
+of code and for inspiration. Use the ShareExtend for generic share.
 
 ## Getting Started
+For Android:
+Just use the `InstagramSharePlus.shareInstagram("path", mediaType: "video" or "image");`
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+For iOS:
+Just use the `InstagramSharePlus.shareInstagram();`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
+## Platform Support
+
+| Android | iOS |
+| :-----: | :-: |
+|   ✔️    | ✔️  |
