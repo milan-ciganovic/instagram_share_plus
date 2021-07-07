@@ -28,7 +28,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.instagram_share_plus
+        package: com.impactbakery.instagram_share_plus
         pluginClass: ShareInstagramVideoPlugin
       ios:
         pluginClass: ShareInstagramVideoPlugin

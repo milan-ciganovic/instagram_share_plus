@@ -1,4 +1,4 @@
-package com.example.instagram_share_plus;
+package com.impactbakery.instagram_share_plus;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
