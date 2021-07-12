@@ -61,6 +61,9 @@ public class SwiftShareInstagramVideoPlugin:  UIViewController, FlutterPlugin,PH
         let identifiers = results.compactMap(\.assetIdentifier)
         let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: identifiers, options: nil)
         
+        if(fetchResult.firstObject == nil) {
+            return
+        }
         let localId = fetchResult.firstObject!.localIdentifier
         
         let url = URL(string: "instagram://library?LocalIdentifier=\(localId)")
