@@ -95,16 +95,16 @@ class _HomePageState extends State<HomePage> {
         return _status;
       }
 
-      im.PickedFile? file;
+      im.XFile? file;
       //TODO : Refactor - implement picker inside native code?
       switch (type) {
         case Type.image:
           file =
-              await im.ImagePicker().getImage(source: im.ImageSource.gallery);
+              await im.ImagePicker().pickImage(source: im.ImageSource.gallery);
           break;
         case Type.video:
           file =
-              await im.ImagePicker().getVideo(source: im.ImageSource.gallery);
+              await im.ImagePicker().pickVideo(source: im.ImageSource.gallery);
           break;
       }
 
