@@ -1,6 +1,7 @@
-package com.impactbakery.instagram_share_plus_example;
+package com.example.share_instagram_video_example;
 
 import io.flutter.embedding.android.FlutterActivity;
 
 public class MainActivity extends FlutterActivity {
+
 }

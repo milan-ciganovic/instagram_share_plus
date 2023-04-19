@@ -1,12 +1,12 @@
 name: instagram_share_plus
 description: Plugin allowing to share images or videos to Instagram
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/milanciganovic/instagram_share_plus
 repository: https://github.com/milanciganovic/instagram_share_plus
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.20.0"
+  sdk: ">=2.18.0 <3.0.0"
+#  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
@@ -28,7 +28,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.impactbakery.instagram_share_plus
+        package: com.milanciganovic.instagram_share_plus
         pluginClass: ShareInstagramVideoPlugin
       ios:
         pluginClass: ShareInstagramVideoPlugin
