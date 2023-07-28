@@ -11,5 +11,5 @@ Implemented iOS and upgraded Java code to Embedded V2.
 
 ## Demo
 
-![Alt Text](./demo.PNG)
+![Alt Text](./demo.png)
 
