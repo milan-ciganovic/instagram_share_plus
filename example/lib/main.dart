@@ -1,10 +1,10 @@
+import 'dart:async';
 import 'dart:io';
+
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:image_picker/image_picker.dart' as im;
 import 'package:instagram_share_plus/instagram_share_plus.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,51 +39,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _permissionGranted = false;
-
-// TODO: Ask for Permission
-  @override
-  void initState() {
-    _requestPermission();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        if (!_permissionGranted)
-          Container(
-            child: Column(
-              children: [
-                Center(
-                  child: Text(
-                    'You have disabled access to the photos, please enable in settings.',
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(
-                  height: 24,
-                ),
-                TextButton(
-                    onPressed: () => openAppSettings(),
-                    child: Text('Enable Again'))
-              ],
+        Column(
+          children: [
+            TextButton(
+              onPressed: () => _shareToInstagram(type: Type.video),
+              child: Text('Share video to Instagram'),
             ),
-          )
-        else
-          Column(
-            children: [
-              TextButton(
-                onPressed: () => _shareToInstagram(type: Type.video),
-                child: Text('Share video to Instagram'),
-              ),
-              TextButton(
-                onPressed: () => _shareToInstagram(type: Type.image),
-                child: Text('Share image to Instagram'),
-              ),
-            ],
-          )
+            TextButton(
+              onPressed: () => _shareToInstagram(type: Type.image),
+              child: Text('Share image to Instagram'),
+            ),
+          ],
+        )
       ],
     );
   }
@@ -95,50 +66,19 @@ class _HomePageState extends State<HomePage> {
         return _status;
       }
 
-      im.XFile? file;
-      //TODO : Refactor - implement picker inside native code?
-      switch (type) {
-        case Type.image:
-          file =
-              await im.ImagePicker().pickImage(source: im.ImageSource.gallery);
-          break;
-        case Type.video:
-          file =
-              await im.ImagePicker().pickVideo(source: im.ImageSource.gallery);
-          break;
-      }
+      im.XFile? file = switch (type) {
+        Type.image =>
+          await im.ImagePicker().pickImage(source: im.ImageSource.gallery),
+        Type.video =>
+          await im.ImagePicker().pickVideo(source: im.ImageSource.gallery),
+      };
 
-      String? _status = await InstagramSharePlus.shareInstagram(
-          path: file!.path, type: EnumToString.convertToString(type));
-      print(_status);
-
-      return _status;
+      return await InstagramSharePlus.shareInstagram(
+        path: file!.path,
+        type: EnumToString.convertToString(type),
+      );
     } on Exception catch (_) {
       return null;
-    }
-  }
-
-  _requestPermission() async {
-    if (Platform.isAndroid) {
-      if (await Permission.storage.request().isGranted) {
-        setState(() {
-          _permissionGranted = true;
-        });
-      } else {
-        setState(() {
-          _permissionGranted = false;
-        });
-      }
-    } else if (Platform.isIOS) {
-      if (await Permission.photos.request().isGranted) {
-        setState(() {
-          _permissionGranted = true;
-        });
-      } else {
-        setState(() {
-          _permissionGranted = false;
-        });
-      }
     }
   }
 }

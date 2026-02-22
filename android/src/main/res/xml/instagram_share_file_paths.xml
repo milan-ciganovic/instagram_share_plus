@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path name="instagram_share_files" path="." />
+    <cache-path name="instagram_share_cache" path="." />
+    <external-files-path name="instagram_share_external_files" path="." />
+    <external-path name="instagram_share_external" path="." />
+</paths>

@@ -1,0 +1,3 @@
+# Exclude files from the published package that shouldn't be included
+# but are needed locally or for CI.
+example/pubspec.lock
