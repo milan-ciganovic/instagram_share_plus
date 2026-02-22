@@ -12,12 +12,9 @@ void main() {
 
 enum Type { image, video }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,14 +28,9 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
